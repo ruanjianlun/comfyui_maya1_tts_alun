@@ -1,0 +1,130 @@
+{
+  "custom_nodes": [
+    {
+      "author": "Alun",
+      "title": "Maya1 TTS - Text to Speech",
+      "id": "maya1-tts",
+      "reference": "https://github.com/your-username/comfyui_alun_maya1",
+      "files": [
+        "https://github.com/your-username/comfyui_alun_maya1"
+      ],
+      "install_type": "git-clone",
+      "description": "High-quality text-to-speech node powered by Maya1 model. Supports multiple voice presets and flexible parameter configuration. Perfect for creating voiceovers, narration, and audio content.",
+      "stars": 0,
+      "last_update": "2025-01-09",
+      "installed": "False",
+      "pip": [
+        "transformers>=4.36.0",
+        "torch>=2.0.0",
+        "snac",
+        "soundfile>=0.12.0",
+        "numpy>=1.24.0"
+      ],
+      "nodename_pattern": "Maya.*TTS",
+      "apt": [],
+      "version": "1.0.0",
+      "license": "MIT",
+      "tags": [
+        "audio",
+        "tts",
+        "text-to-speech",
+        "voice-synthesis",
+        "maya1",
+        "speech-generation"
+      ],
+      "category": "audio",
+      "supported_versions": [
+        "ComfyUI >= 0.0.1"
+      ],
+      "models": [
+        {
+          "name": "Maya1 Main Model",
+          "type": "text-to-speech",
+          "base": "maya-research/maya1",
+          "save_path": "models/maya1_tts_alun",
+          "description": "Maya1 language model for high-quality speech synthesis",
+          "size": "~4GB",
+          "url": "https://huggingface.co/maya-research/maya1"
+        },
+        {
+          "name": "SNAC Audio Decoder",
+          "type": "audio-codec",
+          "base": "hubertsiuzdak/snac_24khz",
+          "save_path": "models/maya1_tts_alun",
+          "description": "SNAC neural audio codec for 24kHz audio decoding",
+          "size": "~200MB",
+          "url": "https://huggingface.co/hubertsiuzdak/snac_24khz"
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Maya1 Text to Speech",
+          "class": "MayaTTSNode",
+          "display_name": "Maya1 Text to Speech",
+          "description": "Convert text to high-quality speech with various voice styles",
+          "category": "audio/maya1",
+          "inputs": {
+            "required": {
+              "text": {
+                "type": "STRING",
+                "description": "Text to convert to speech"
+              },
+              "voice_preset": {
+                "type": "COMBO",
+                "options": [
+                  "Male-Mature",
+                  "Female-Gentle",
+                  "Male-Energetic",
+                  "Female-Professional",
+                  "Neutral-Broadcast"
+                ],
+                "description": "Voice style preset"
+              },
+              "chunk_length": {
+                "type": "INT",
+                "default": 50,
+                "min": 20,
+                "max": 200,
+                "description": "Text chunk length in characters"
+              },
+              "temperature": {
+                "type": "FLOAT",
+                "default": 0.4,
+                "min": 0.1,
+                "max": 1.0,
+                "description": "Generation temperature (randomness)"
+              }
+            },
+            "optional": {
+              "custom_description": {
+                "type": "STRING",
+                "description": "Custom voice description (advanced)"
+              }
+            }
+          },
+          "outputs": {
+            "audio": {
+              "type": "AUDIO",
+              "description": "Generated audio waveform"
+            }
+          }
+        }
+      ],
+      "features": [
+        "High-quality speech synthesis using Maya1 model",
+        "5 built-in voice presets (male, female, different ages)",
+        "Customizable voice descriptions",
+        "Adjustable temperature and chunk length",
+        "Automatic model caching for efficiency",
+        "GPU acceleration support",
+        "24kHz audio output"
+      ],
+      "requirements": {
+        "python": ">=3.9",
+        "gpu": "Recommended (CUDA support)",
+        "vram": "4GB+ recommended",
+        "disk_space": "5GB for models"
+      }
+    }
+  ]
+}

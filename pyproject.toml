@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comfyui-maya1-tts"
+version = "1.0.0"
+description = "High-quality text-to-speech ComfyUI custom node powered by Maya1 model"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Alun", email = "zhaozed888@gmail.com"}
+]
+keywords = [
+    "comfyui",
+    "text-to-speech",
+    "tts",
+    "audio",
+    "maya1",
+    "voice-synthesis",
+    "speech-generation"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+
+dependencies = [
+    "transformers>=4.36.0",
+    "torch>=2.0.0",
+    "snac",
+    "soundfile>=0.12.0",
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-username/comfyui_alun_maya1"
+Repository = "https://github.com/your-username/comfyui_alun_maya1"
+"Bug Tracker" = "https://github.com/your-username/comfyui_alun_maya1/issues"
+Documentation = "https://github.com/your-username/comfyui_alun_maya1/blob/main/README.md"
+
+[tool.setuptools]
+packages = ["comfyui_alun_maya1"]
+
+[tool.setuptools.package-data]
+comfyui_alun_maya1 = ["*.json", "*.md"]
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

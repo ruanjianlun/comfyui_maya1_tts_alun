@@ -1,0 +1,95 @@
+{
+  "name": "Maya1 TTS - Text to Speech",
+  "version": "1.0.0",
+  "description": "High-quality text-to-speech node powered by Maya1 model with multiple voice presets",
+  "author": "Alun",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/comfyui_alun_maya1"
+  },
+  "keywords": [
+    "comfyui",
+    "text-to-speech",
+    "tts",
+    "audio",
+    "maya1",
+    "voice-synthesis"
+  ],
+  "comfyui": {
+    "node_class": "MayaTTSNode",
+    "display_name": "Maya1 Text to Speech",
+    "category": "audio/maya1",
+    "output_node": true,
+    "models_dir": "models/maya1_tts_alun",
+    "preload": false
+  },
+  "requirements": {
+    "python": ">=3.9",
+    "comfyui": ">=0.0.1",
+    "gpu_recommended": true,
+    "vram_min": "4GB"
+  },
+  "dependencies": {
+    "transformers": ">=4.36.0",
+    "torch": ">=2.0.0",
+    "snac": "latest",
+    "soundfile": ">=0.12.0",
+    "numpy": ">=1.24.0"
+  },
+  "models": [
+    {
+      "name": "maya1",
+      "source": "huggingface",
+      "repo": "maya-research/maya1",
+      "type": "text-to-speech",
+      "size": "4GB",
+      "auto_download": true
+    },
+    {
+      "name": "snac_24khz",
+      "source": "huggingface",
+      "repo": "hubertsiuzdak/snac_24khz",
+      "type": "audio-codec",
+      "size": "200MB",
+      "auto_download": true
+    }
+  ],
+  "features": [
+    "High-quality 24kHz speech synthesis",
+    "5 voice style presets",
+    "Customizable voice descriptions",
+    "GPU acceleration",
+    "Model caching",
+    "Long text support with chunking"
+  ],
+  "voice_presets": [
+    {
+      "name": "Male-Mature",
+      "description": "Mature male voice, 30s age, American accent"
+    },
+    {
+      "name": "Female-Gentle",
+      "description": "Gentle female voice, 20s age, American accent"
+    },
+    {
+      "name": "Male-Energetic",
+      "description": "Energetic male voice, 20s age, American accent"
+    },
+    {
+      "name": "Female-Professional",
+      "description": "Professional female voice, 30s age, British accent"
+    },
+    {
+      "name": "Neutral-Broadcast",
+      "description": "Neutral voice, standard accent, broadcasting style"
+    }
+  ],
+  "examples": [
+    {
+      "name": "Basic TTS",
+      "workflow": "workflow_example.json",
+      "description": "Simple text-to-speech conversion"
+    }
+  ]
+}
