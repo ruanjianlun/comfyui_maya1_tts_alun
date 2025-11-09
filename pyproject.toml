@@ -51,10 +51,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/comfyui_alun_maya1"
-Repository = "https://github.com/your-username/comfyui_alun_maya1"
-"Bug Tracker" = "https://github.com/your-username/comfyui_alun_maya1/issues"
-Documentation = "https://github.com/your-username/comfyui_alun_maya1/blob/main/README.md"
+Homepage = "https://github.com/ruanjianlun/comfyui_maya1_tts_alun"
+Repository = "https://github.com/ruanjianlun/comfyui_maya1_tts_alun"
+
 
 [tool.setuptools]
 packages = ["comfyui_alun_maya1"]
