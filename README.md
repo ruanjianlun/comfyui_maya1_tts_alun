@@ -19,7 +19,7 @@ A high-quality text-to-speech (TTS) ComfyUI custom node powered by the Maya1 mod
 
 ```bash
 cd ComfyUI/custom_nodes/
-git clone https://github.com/your-username/comfyui_alun_maya1.git
+git clone https://github.com/ruanjianlun/comfyui_maya1_tts_alun.git
 cd comfyui_alun_maya1
 pip install -r requirements.txt
 ```
@@ -36,6 +36,7 @@ pip install -r requirements.txt
 ### Dependencies
 
 Main dependencies include:
+
 - `transformers` - Hugging Face model library
 - `torch` - PyTorch deep learning framework
 - `snac` - SNAC audio codec
@@ -54,13 +55,13 @@ Main dependencies include:
 
 The node provides the following parameters:
 
-| Parameter | Type | Description | Default |
-|-----------|------|-------------|---------|
-| **text** | String | Text to convert to speech | "Hello, this is a test..." |
-| **voice_preset** | Dropdown | Voice style preset | Male-Mature |
-| **chunk_length** | Integer | Text chunk length (characters) | 50 |
-| **temperature** | Float | Generation temperature (0.1-1.0, higher = more random) | 0.4 |
-| **custom_description** | String (Optional) | Custom voice description | Empty |
+| Parameter                    | Type              | Description                                            | Default                    |
+| ---------------------------- | ----------------- | ------------------------------------------------------ | -------------------------- |
+| **text**               | String            | Text to convert to speech                              | "Hello, this is a test..." |
+| **voice_preset**       | Dropdown          | Voice style preset                                     | Male-Mature                |
+| **chunk_length**       | Integer           | Text chunk length (characters)                         | 50                         |
+| **temperature**        | Float             | Generation temperature (0.1-1.0, higher = more random) | 0.4                        |
+| **custom_description** | String (Optional) | Custom voice description                               | Empty                      |
 
 ### 3. Voice Style Presets
 
@@ -82,6 +83,7 @@ Deep pitch, authoritative tone, slow pacing.
 ```
 
 Description template:
+
 - **Age**: in the 20s/30s/40s age
 - **Accent**: american/british/australian accent
 - **Pitch**: high/normal/low/deep pitch
@@ -107,11 +109,13 @@ comfyui_alun_maya1/
 ### Model Storage Location
 
 Models will auto-download to:
+
 ```
 ComfyUI/models/maya1_tts_alun/
 ```
 
 Includes the following model files:
+
 - Maya1 main model (~4GB)
 - Maya1 tokenizer
 - SNAC audio decoder (~200MB)
@@ -119,6 +123,7 @@ Includes the following model files:
 ### Output File Location
 
 Generated audio files are saved to:
+
 ```
 ComfyUI/output/maya_tts_XXXXXX.wav
 ```
@@ -186,7 +191,8 @@ clear_model_cache()
 
 ### Q2: Out of memory errors?
 
-**A**: 
+**A**:
+
 - Reduce the `chunk_length` parameter (e.g., change to 30)
 - Close other VRAM-consuming programs
 - Use CPU mode (auto-detects, no configuration needed)
@@ -194,6 +200,7 @@ clear_model_cache()
 ### Q3: Generated speech quality is not ideal?
 
 **A**:
+
 - Adjust the `temperature` parameter (0.3-0.5 usually works well)
 - Try different voice presets
 - Use custom descriptions for more precise voice characteristics
@@ -206,6 +213,7 @@ clear_model_cache()
 ### Q5: How to speed up generation?
 
 **A**:
+
 - Ensure using GPU (CUDA)
 - Reduce `chunk_length` (but may affect speech continuity)
 - Lower `temperature` value
@@ -240,6 +248,7 @@ This project is open source under the MIT License.
 ## 🌟 Support the Project
 
 If this project helps you, please:
+
 - ⭐ Star the project
 - 🐛 Report bugs
 - 💡 Suggest new features
