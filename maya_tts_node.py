@@ -68,7 +68,7 @@ def split_text(text: str, max_length: int = 50) -> list:
     return chunks
 
 
-def build_prompt(tokenizer, description: str, text: str) -> str:
+def build_prompt(tokenizer, description: str, text: str, use_custom_description: bool = False) -> str:
     """
     构建Maya1模型的格式化提示词
     
@@ -76,6 +76,7 @@ def build_prompt(tokenizer, description: str, text: str) -> str:
         tokenizer: 分词器
         description: 语音描述（音色、风格等）
         text: 要转换的文本内容
+        use_custom_description: 是否使用自定义描述（影响文本标签处理）
         
     Returns:
         str: 格式化后的提示词
@@ -89,7 +90,11 @@ def build_prompt(tokenizer, description: str, text: str) -> str:
     bos_token = tokenizer.bos_token  # 序列开始
 
     # 构建格式化文本
-    formatted_text = f'<description="{description}"> {text}'
+    # 如果使用自定义描述，将描述和文本分开，确保文本中的标签生效
+    if use_custom_description:
+        formatted_text = f'<description="{description}">{text}'
+    else:
+        formatted_text = f'<description="{description}"> {text}'
     
     # 组装完整提示词
     prompt = (
@@ -170,7 +175,7 @@ def unpack_snac_from_7(snac_tokens: list) -> list:
 
 
 def generate_audio_chunk(model, tokenizer, snac_model, description: str, text: str, device: str, 
-                        temperature: float = 0.4, max_new_tokens: int = 2048) -> np.ndarray:
+                        temperature: float = 0.4, max_new_tokens: int = 2048, use_custom_description: bool = False) -> np.ndarray:
     """
     为单个文本片段生成音频
     
@@ -183,12 +188,13 @@ def generate_audio_chunk(model, tokenizer, snac_model, description: str, text: s
         device: 计算设备
         temperature: 采样温度（控制随机性，越高越随机）
         max_new_tokens: 最大生成token数
+        use_custom_description: 是否使用自定义描述
         
     Returns:
         np.ndarray: 生成的音频数组
     """
     # 构建提示词
-    prompt = build_prompt(tokenizer, description, text)
+    prompt = build_prompt(tokenizer, description, text, use_custom_description)
 
     # 分词并转换为张量
     inputs = tokenizer(prompt, return_tensors="pt")
@@ -230,9 +236,11 @@ def generate_audio_chunk(model, tokenizer, snac_model, description: str, text: s
         audio = snac_model.decoder(z_q)[0, 0].cpu().numpy()
 
     # 移除预热样本（前2048个样本）
+    # 参考 maya_run.py 的处理逻辑
     if len(audio) > 2048:
+        print(f"Trimming {len(audio)} samples, removing first 2048 warmup samples")
         audio = audio[2048:]
-
+    
     return audio
 
 
@@ -260,9 +268,9 @@ class MayaTTSNode:
                 }),
                 # 文本分块长度（字符数）
                 "chunk_length": ("INT", {
-                    "default": 50,
+                    "default": 200,
                     "min": 20,
-                    "max": 200,
+                    "max": 1000,
                     "step": 10,
                     "display": "slider"
                 }),
@@ -284,9 +292,9 @@ class MayaTTSNode:
             }
         }
 
-    # 节点返回类型：音频
-    RETURN_TYPES = ("AUDIO",)
-    RETURN_NAMES = ("audio",)
+    # 节点返回类型：音频 + 文本拆分预览
+    RETURN_TYPES = ("AUDIO", "STRING")
+    RETURN_NAMES = ("audio", "split_preview")
     
     # 执行函数名
     FUNCTION = "generate_speech"
@@ -366,7 +374,36 @@ class MayaTTSNode:
         print(f"\n[3/3] Processing Text ({len(text)} characters)...")
         text_chunks = split_text(text, max_length=chunk_length)
         print(f"Split into {len(text_chunks)} chunks")
+        
+        # 构建文本拆分预览
+        preview_lines = [
+            "="*80,
+            f"Text Split Preview - Total: {len(text_chunks)} chunks",
+            "="*80,
+            ""
+        ]
+        
+        for i, chunk in enumerate(text_chunks, 1):
+            preview_lines.append(f"[Chunk {i}/{len(text_chunks)}] ({len(chunk)} chars)")
+            preview_lines.append(f"{chunk}")
+            preview_lines.append("")
+        
+        preview_lines.extend([
+            "="*80,
+            f"Statistics:",
+            f"  - Original text length: {len(text)} characters",
+            f"  - Chunk length setting: {chunk_length}",
+            f"  - Number of chunks: {len(text_chunks)}",
+            f"  - Average chunk size: {sum(len(c) for c in text_chunks) / len(text_chunks):.1f} chars",
+            "="*80
+        ])
+        
+        split_preview = "\n".join(preview_lines)
+        print("\n" + split_preview)
 
+        # 判断是否使用自定义描述
+        use_custom = custom_description.strip() != ""
+        
         # 生成音频片段
         audio_chunks = []
         for i, chunk in enumerate(text_chunks, 1):
@@ -376,7 +413,8 @@ class MayaTTSNode:
             audio = generate_audio_chunk(
                 model, tokenizer, snac_model, 
                 description, chunk, device,
-                temperature=temperature
+                temperature=temperature,
+                use_custom_description=use_custom
             )
             
             if len(audio) > 0:
@@ -417,7 +455,7 @@ class MayaTTSNode:
             "sample_rate": 24000
         }
 
-        return (audio_dict,)
+        return (audio_dict, split_preview)
 
 
 # ============================================================================

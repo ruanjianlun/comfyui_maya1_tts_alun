@@ -206,6 +206,7 @@ def main():
 
     # Trim warmup samples (first 2048 samples)
     if len(audio) > 2048:
+        print(f"Trimming {len(audio)} samples, removing first 2048 warmup samples")
         audio = audio[2048:]
 
     duration_sec = len(audio) / 24000

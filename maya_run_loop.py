@@ -183,22 +183,11 @@ def main():
     # description = "Realistic male voice in the 30s age with american accent. Normal pitch, warm timbre, conversational pacing."
     description = "The voice of US President Trump giving an exciting and passionate speech. Deep pitch, authoritative tone, energetic pacing."
     text = '''
-    
-    🎉 What is up, my creative legends?! <excited> Welcome back to the channel! Today, we are diving headfirst into the beast that is ComfyUI! Now, if you're stuck in the dark ages of linear AI generation—you know, just typing a prompt and hoping for the best—then get ready for a paradigm shift!
-
-<scream> No, I am NOT talking about Automatic1111! <scream> That's for n00bs who don't want to see the magic happen! <laugh>
-
-ComfyUI is a node-based interface for Stable Diffusion, and trust me, it's where the pros live. <gasp> Think of it like a visual coding environment for AI art! Instead of a single box, you get a canvas where you connect different colored nodes—Load Checkpoint, CLIP Text Encode, KSampler, VAE Decode... <whisper> It sounds complicated, right? </whisper> It is! <sarcastic> But that's the fun part! </sarcastic>
-
+    What is up, my creative legends?! <laugh_harder> Welcome back to the channel! <whisper>Today, we are diving headfirst into the beast that is ComfyUI! Now, <whisper>if you're stuck in the dark ages of linear AI generation—you know, <laugh_harder>just typing a prompt and hoping for the best—then get ready for a paradigm shift!
+<laugh_harder> No, I am NOT talking about Automatic1111! <laugh_harder> That's for n00bs who don't want to see the magic happen! <laugh_harder>
+ComfyUI is a node-based interface for Stable Diffusion, and trust me, it's where the pros live. <whisper> Think of it like a visual coding environment for AI art! Instead of a single box, you get a canvas where you connect different colored nodes—Load Checkpoint, CLIP Text Encode, KSampler, VAE Decode... <whisper> It sounds complicated, right? <whisper> It is! <whisper> But that's the fun part! <whisper>
 Why put yourself through this? Control, my friends, absolute control!
-
-With ComfyUI, you see the entire image generation pipeline laid out in front of you. You can literally watch the image being rendered in real-time. <excited> You can grab the latent noise at any point, inject a LoRA only into the foreground, use one prompt for the background and another for the subject... <chuckle> It’s like having a digital laboratory!
-
-The Downside? <sigh> Oh, the pain! <angry> The learning curve is so steep, my GPU is already out of breath! You will spend hours, I mean HOURS, searching for that one custom node on GitHub that finally makes your workflow just right. And your graph? <cry> It'll look like a plate of spaghetti exploded!
-
-But when you finally build that one complex workflow—ControlNet, upscaling, multi-prompting, all in one click—and you save that little JSON file... <gulp> That file is the workflow. You can share it, you can load it into your friend's setup, and it runs perfectly. That level of transparency and reproducibility? <sing> Chef's kiss! It's so beautiful! </sing>
-
-<laugh_harder> So ditch the easy button! Come embrace the chaos of nodes! <laugh_harder> This is how you go from an AI art hobbyist to an AI art engineer. Are you ready to build some visual pipelines? Hit that like and subscribe button! We've got a whole series on this coming up!
+With ComfyUI, you see the entire image generation pipeline laid out in front of you. You can literally watch the image being rendered in real-time. <laugh_harder> You can grab the latent noise at any point, inject a LoRA only into the foreground, use one prompt for the background and another for the subject... <laugh_harder> It’s like having a digital laboratory!
     '''
 
     print("\n[3/4] Splitting and generating speech...")
