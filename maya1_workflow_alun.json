@@ -1,0 +1,286 @@
+{
+  "id": "1f5c36e2-7d70-46f8-b5f3-b00addd33090",
+  "revision": 0,
+  "last_node_id": 31,
+  "last_link_id": 19,
+  "nodes": [
+    {
+      "id": 10,
+      "type": "Text Multiline",
+      "pos": [
+        4423.217295169599,
+        1853.1973226361667
+      ],
+      "size": [
+        706.7489758587226,
+        434.20838627733974
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "pr-was-node-suite-comfyui-47064894",
+        "ver": "1.0.2",
+        "Node name for S&R": "Text Multiline",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.4.1"
+        }
+      },
+      "widgets_values": [
+        "What is up, my creative legends?! <laugh_harder> Welcome back to the channel! <scream>Today, we are diving headfirst into the beast that is ComfyUI! Now, <whisper>if you're stuck in the dark ages of linear AI generation—you know, <laugh_harder>just typing a prompt and hoping for the best—then get ready for a paradigm shift!\n<laugh_harder> No, I am NOT talking about Automatic1111! <laugh_harder> That's for n00bs who don't want to see the magic happen! <laugh_harder>\nComfyUI is a node-based interface for Stable Diffusion, and trust me, it's where the pros live. <whisper> Think of it like a visual coding environment for AI art! Instead of a single box, you get a canvas where you connect different colored nodes—Load Checkpoint, CLIP Text Encode, KSampler, VAE Decode... <whisper> It sounds complicated, right? <whisper> It is! <whisper> But that's the fun part! <whisper>\nWhy put yourself through this? Control, my friends, absolute control!\nWith ComfyUI, you see the entire image generation pipeline laid out in front of you. You can literally watch the image being rendered in real-time. <laugh_harder> You can grab the latent noise at any point, inject a LoRA only into the foreground,<excited> use one prompt for the background and another for the subject... <laugh_harder> It’s like having a digital laboratory!"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "Note",
+      "pos": [
+        4069.402030489362,
+        1853.733990822921
+      ],
+      "size": [
+        294.2659799479934,
+        384.6865643764768
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.4.1",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "<laugh>\n<laugh_harder>\n<sigh>\n<chuckle>\n<gasp>\n<angry>\n<excited>\n<whisper>\n<cry>\n<scream>\n<sing>\n<snort>\n<exhale>\n<gulp>\n<giggle>\n<sarcastic>\n<curious>"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 17,
+      "type": "SaveAudio",
+      "pos": [
+        5665.866608256679,
+        1842.2187610176043
+      ],
+      "size": [
+        270,
+        112
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 18
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.68",
+        "Node name for S&R": "SaveAudio",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.4.1"
+        }
+      },
+      "widgets_values": [
+        "maya_show1"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "Note",
+      "pos": [
+        4071.290135783324,
+        2347.649392408121
+      ],
+      "size": [
+        362.3334909483274,
+        303.5755281755228
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.4.1",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "    description = \"Realistic male voice in the 30s age with american accent. Normal pitch, warm timbre, conversational pacing.\"\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 27,
+      "type": "easy showAnything",
+      "pos": [
+        5646.1948080516295,
+        2054.823734099406
+      ],
+      "size": [
+        445.17746465765686,
+        408.3569553221855
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "76b5896f089d5b4f7619559cf5f7fc0560e3dc40",
+        "Node name for S&R": "easy showAnything",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.4.1"
+        }
+      },
+      "widgets_values": [
+        "================================================================================\nText Split Preview - Total: 9 chunks\n================================================================================\n\n[Chunk 1/9] (148 chars)\nWhat is up, my creative legends?! <laugh_harder> Welcome back to the channel! <scream>Today, we are diving headfirst into the beast that is ComfyUI!\n\n[Chunk 2/9] (176 chars)\nNow, <whisper>if you're stuck in the dark ages of linear AI generation—you know, <laugh_harder>just typing a prompt and hoping for the best—then get ready for a paradigm shift!\n\n[Chunk 3/9] (128 chars)\n<laugh_harder> No, I am NOT talking about Automatic1111! <laugh_harder> That's for n00bs who don't want to see the magic happen!\n\n[Chunk 4/9] (177 chars)\n<laugh_harder>\nComfyUI is a node-based interface for Stable Diffusion, and trust me, it's where the pros live. <whisper> Think of it like a visual coding environment for AI art!\n\n[Chunk 5/9] (199 chars)\nInstead of a single box, you get a canvas where you connect different colored nodes—Load Checkpoint, CLIP Text Encode, KSampler, VAE Decode... <whisper> It sounds complicated, right? <whisper> It is!\n\n[Chunk 6/9] (199 chars)\n<whisper> But that's the fun part! <whisper>\nWhy put yourself through this? Control, my friends, absolute control! With ComfyUI, you see the entire image generation pipeline laid out in front of you.\n\n[Chunk 7/9] (62 chars)\nYou can literally watch the image being rendered in real-time.\n\n[Chunk 8/9] (172 chars)\n<laugh_harder> You can grab the latent noise at any point, inject a LoRA only into the foreground,<excited> use one prompt for the background and another for the subject...\n\n[Chunk 9/9] (53 chars)\n<laugh_harder> It’s like having a digital laboratory!\n\n================================================================================\nStatistics:\n  - Original text length: 1322 characters\n  - Chunk length setting: 200\n  - Number of chunks: 9\n  - Average chunk size: 146.0 chars\n================================================================================"
+      ]
+    },
+    {
+      "id": 29,
+      "type": "MayaTTSNode",
+      "pos": [
+        5146.887448096801,
+        1844.0970917455159
+      ],
+      "size": [
+        400,
+        234
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            18
+          ]
+        },
+        {
+          "name": "split_preview",
+          "type": "STRING",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "ruanjianlun/comfyui_maya1_tts_alun",
+        "ver": "74867d3c5d451fb95871da7507330377528c1d95",
+        "Node name for S&R": "MayaTTSNode",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.4.1"
+        }
+      },
+      "widgets_values": [
+        "Hello, this is a test of Maya1 text to speech system.",
+        "Male-Mature",
+        200,
+        0.4,
+        "Realistic male voice in the 30s age with american accent. "
+      ]
+    }
+  ],
+  "links": [
+    [
+      17,
+      10,
+      0,
+      29,
+      0,
+      "STRING"
+    ],
+    [
+      18,
+      29,
+      0,
+      17,
+      0,
+      "AUDIO"
+    ],
+    [
+      19,
+      29,
+      1,
+      27,
+      0,
+      "*"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "ds": {
+      "scale": 1.1671841070450026,
+      "offset": [
+        -3954.4295044063906,
+        -1628.9086715786227
+      ]
+    },
+    "frontendVersion": "1.28.8",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
